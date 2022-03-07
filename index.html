@@ -7,14 +7,42 @@
     <title>comparing react JS and vanila JS</title>
   </head>
   <body>
-    <!-- react cdn ver 17.0.2  and react-dom -->
-    <!-- 리액트를 실행하기 위해서 2가지 임포트 하는 것이 필요
+    <div id="root"></div>
+  </body>
+  <!-- react cdn ver 17.0.2  and react-dom -->
+  <!-- 리액트를 실행하기 위해서 2가지 임포트 하는 것이 필요
     1. react 
     2. react-dom 
     제대로 임포트됐는 지 확인하는 법: console에 react 쳐보기 -->
-    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
 
-    <script></script>
-  </body>
+  <script>
+    const root = document.getElementById("root");
+    //React.createElement(1번째인자, 2번째인자, 3번째인자)
+    // 여기서 2번째 인자로 property 를 줄 수도 있고 property에 event listener를 등록할 수 있다!
+    const h3 = React.createElement(
+      "h3",
+      {
+        id: "title",
+        onMouseEnter: () => console.log("mouse enter"),
+      },
+      "Hello I am a title!"
+    );
+    const btn = React.createElement(
+      "button",
+      {
+        style: {
+          backgroundColor: "tomato",
+        },
+        onClick: () => console.log("I am clicked!"),
+      },
+      "Click me"
+    );
+    const container = React.createElement("div", null, [h3, btn]);
+    ReactDOM.render(container, root);
+    //만약에 span과 btn 둘 다 렌더하고 싶다면 어떻게 하면될까?
+    //1. React element div 를 생성하고 3번째 인자 값으로 배열을 준다.
+    //2. 해당 배열안에 미리 만들어놓은 span, btn을 넣는다. (순서가 span -> btn순으로 렌더링되게)
+  </script>
 </html>
