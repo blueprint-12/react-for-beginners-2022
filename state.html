@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React JS : understanding state(bad coding ver)</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <!-- react and reactDOM -->
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <!-- Load Babel -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.getElementById("root");
+    let counter = 0;
+    //카운트를 올려주는 기능 - countUP()
+    function render() {
+      ReactDOM.render(<Container />, root);
+    }
+    function countUp() {
+      counter = counter + 1;
+      render();
+    }
+
+    const Container = () => (
+      //React Element를 함수 내에 담으면 원하는 만큼 사용할 수 있게 된다.
+      //함수가 리액트 엘리먼트를 리턴해주기 때문에 코드를 재사용할 수 있다. 컴포넌트 재사용
+      //변수를 JSX에 전달하는 방법 -> {변수명}
+
+      <div>
+        <h3>Total clicks : {counter}</h3>
+        <button onClick={countUp}>Click me!</button>
+      </div>
+    );
+    render();
+  </script>
+</html>
